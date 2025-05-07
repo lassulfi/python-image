@@ -54,10 +54,10 @@ jobs:
       - name: Build Docker Image
         working-directory: '${{ inputs.docker-file-path }}'
         run: |
-            docker build -t ${{ steps.settings-parser.outputs.registry }}/${{ steps.settings-parser.outputs.repository }}:${{ GITHUB_SHA:0:7 }}
+            docker build -t ${{ steps.settings-parser.outputs.registry }}/${{ steps.settings-parser.outputs.repository }}:${GITHUB_SHA:0:7}
 
       - name: Push Docker Image
         run: |
-            docker push ${{ steps.settings-parser.outputs.registry }}/${{ steps.settings-parser.outputs.repository }}:${{ GITHUB_SHA:0:7 }}
+            docker push ${{ steps.settings-parser.outputs.registry }}/${{ steps.settings-parser.outputs.repository }}:${GITHUB_SHA:0:7}
         working-directory: '${{ inputs.docker-file-path }}'
             
